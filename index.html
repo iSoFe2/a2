@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>أسيراما</title>
+  <style>
+    /* تهيئة عامة للصفحة */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: sans-serif;
+      direction: rtl; /* دعم اللغة العربية */
+      color: #fff;    /* لون النص */
+    }
+
+    /* الفيديو في الخلفية */
+    #bg-video {
+      position: fixed;    /* ثبّت الفيديو خلف العناصر */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  /* ملء الشاشة مع المحافظة على نسبة الأبعاد */
+      z-index: -1;        /* خلف كل العناصر الأخرى */
+    }
+
+    /* طبقة تعتيم خفيفة فوق الفيديو لتحسين وضوح النص */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* تعتيم 50% */
+      z-index: 0;
+    }
+
+    /* شريط علوي بسيط لاسم المنصة */
+    .navbar {
+      position: relative;
+      background-color: transparent; /* خلفية شفافة */
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 1rem;
+      z-index: 1; /* فوق التعتيم */
+    }
+
+    /* حاوية العرض الأساسية لتوسيط المحتوى عمودياً وأفقياً */
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100% - 60px); /* طرح ارتفاع الشريط العلوي */
+      padding: 1rem;
+      z-index: 1; /* فوق التعتيم */
+    }
+
+    /* البطاقة (المربع) الذي يظهر في المنتصف */
+    .modal {
+      background-color: rgba(31, 45, 61, 0.85); /* خلفية نصف شفافة */
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .modal p {
+      margin: 1rem 0 1.5rem;
+      line-height: 1.6;
+    }
+
+    .modal button {
+      background-color: #3498db;
+      border: none;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <!-- الفيديو في الخلفية -->
+  <video autoplay muted loop id="bg-video">
+    <source src="video.mp4" type="video/mp4">
+    <!-- إذا لم يتم تشغيل الفيديو، يمكن عرض خلفية داكنة كبديل -->
+  </video>
+
+  <!-- طبقة التعتيم فوق الفيديو -->
+  <div class="overlay"></div>
+
+  <!-- الشريط العلوي لاسم الموقع -->
+  <div class="navbar">
+    أسيراما
+  </div>
+
+  <!-- الحاوية الرئيسية لتوسيط المحتوى -->
+  <div class="container">
+    <div class="modal">
+      <h2>مرحباً بك في منصة أسيراما</h2>
+      <p>
+        لمشاهدة الأفلام والمسلسلات. نحن نعمل على إصلاح بعض المشاكل التقنية.
+        جرب المحاولة مرة أخرى لاحقاً.
+      </p>
+      <button onclick="window.location.reload()">تحديث الصفحة</button>
+    </div>
+  </div>
+</body>
+</html>
